@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages("remotes")
+          install.packages("remotes", "readr")
           remotes::install_github("royfrancis/pophelper")
         shell: Rscript {0}
 
