@@ -24,11 +24,32 @@ jobs:
       - name: Run ADMIXTURE example
         run: ./admixture hapmap3.bed 3
 
+      - name: Move the P file
+        run: mv hapmap3.3.P hapmap3_block.3.P
+
+      - name: Move the Q file
+        run: mv hapmap3.3.P hapmap3_block.3.P
+
       - name: Show the head of the P file
-        run: head *.P
+        run: head hapmap3_block.3.P
 
       - name: Show the head of the Q file
-        run: head *.Q
+        run: head hapmap3_block.3.P
+
+      - name: Run ADMIXTURE example with EM method
+        run: ./admixture hapmap3.bed 3 -m EM
+
+      - name: Move the P file
+        run: mv hapmap3.3.P hapmap3_em.3.P
+
+      - name: Move the Q file
+        run: mv hapmap3.3.P hapmap3_em.3.P
+
+      - name: Show the head of the P file
+        run: head hapmap3_em.3.P
+
+      - name: Show the head of the Q file
+        run: head hapmap3_em.3.P
 
       - name: Zip the Q and P files
         run: zip admixture_results.zip *.P *.Q
