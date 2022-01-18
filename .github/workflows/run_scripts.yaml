@@ -21,3 +21,6 @@ jobs:
       - name: Get ADMIXTURE
         run: ./get_admixture.sh
 
+      - name: Run ADMIXTURE example
+        run: ./admixture hapmap3.bed 3
+
