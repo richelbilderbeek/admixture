@@ -24,11 +24,11 @@ jobs:
       - name: Run ADMIXTURE example
         run: ./admixture hapmap3.bed 3
 
-      - name: Show P file
-        run: cat *.P
+      - name: Show the head of the P file
+        run: head *.P
 
-      - name: Show Q file
-        run: cat *.Q
+      - name: Show the head of the Q file
+        run: head *.Q
 
       - name: Zip the Q and P files
         run: zip admixture_results.zip *.P *.Q
