@@ -8,7 +8,7 @@ pophelper::plotQ(
 )
 
 p_block <- list()
-p_block$hapmap3.3.P <- readr::read_delim(
+p_block$hapmap3_block.3.P <- readr::read_delim(
   "hapmap3_block.3.P", 
   show_col_types = FALSE,
   col_names = c("Cluster1", "Cluster2", "Cluster3")
@@ -16,7 +16,7 @@ p_block$hapmap3.3.P <- readr::read_delim(
 pophelper::plotQ(p_block, exportpath = getwd())
 
 p_em <- list()
-p_em$hapmap3.3.P <- readr::read_delim(
+p_em$hapmap3_em.3.P <- readr::read_delim(
   "hapmap3_em.3.P", 
   show_col_types = FALSE,
   col_names = c("Cluster1", "Cluster2", "Cluster3")
