@@ -1,11 +1,24 @@
-remotes::install_github("royfrancis/pophelper")
+pophelper::plotQ(
+  pophelper::readQ("hapmap3_block.3.Q"), 
+  exportpath = getwd()
+)
+pophelper::plotQ(
+  pophelper::readQ("hapmap3_em.3.Q"), 
+  exportpath = getwd()
+)
 
-list.files()
-q <- pophelper::readQ("hapmap3.3.Q")
-pophelper::plotQ(q, exportpath = getwd())
-hapmap3.3.Q.png
+p_block <- list()
+p_block$hapmap3.3.P <- readr::read_delim(
+  "hapmap3_block.3.P", 
+  show_col_types = FALSE,
+  col_names = c("Cluster1", "Cluster2", "Cluster3")
+)
+pophelper::plotQ(p_block, exportpath = getwd())
 
-
-pophelper::read
-p <- pophelper::readP("hapmap3.3.P")
-# 
+p_em <- list()
+p_em$hapmap3.3.P <- readr::read_delim(
+  "hapmap3_em.3.P", 
+  show_col_types = FALSE,
+  col_names = c("Cluster1", "Cluster2", "Cluster3")
+)
+pophelper::plotQ(p_em, exportpath = getwd())

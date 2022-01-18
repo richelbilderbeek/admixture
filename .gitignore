@@ -41,3 +41,7 @@ vignettes/*.pdf
 dist/
 admixture
 hapmap3.*
+hapmap3_block.3.P
+hapmap3_block.3.Q
+hapmap3_em.3.Q
+hapmap3_em.3.P
