@@ -18,21 +18,6 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v1
 
-      - name: Download ADMIXTURE
-        run: ./download_admixture.sh
-
-      - name: Run create_under_over_fitting_plots.R 
-        run: Rscript create_under_over_fitting_plots.R
-
-      - name: Run f1_score.R
-        run: Rscript f1_score.R
-
-      - name: Zip results
-        run: zip pictures.zip *.png
-
-      - name: Upload table to the workflow tab
-        uses: actions/upload-artifact@v2
-        with:
-          name: pictures
-          path: pictures.zip
+      - name: Get ADMIXTURE
+        run: ./get_admixture.sh
 

@@ -40,3 +40,4 @@ vignettes/*.pdf
 *.tar
 dist/
 admixture
+hapmap3.*
