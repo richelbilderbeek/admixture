@@ -16,44 +16,26 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      #- name: Install R
-      #  uses: r-lib/actions/setup-r@v1
-
       - name: Get ADMIXTURE
         run: ./get_admixture.sh
 
-      - name: Run ADMIXTURE example
-        run: ./admixture hapmap3.bed 3
+      - name: Run ADMIXTURE
+        run: ./run_admixture.sh
 
-      - name: Move the P file
-        run: mv hapmap3.3.P hapmap3_block.3.P
+      - name: Install R
+        uses: r-lib/actions/setup-r@v1
 
-      - name: Move the Q file
-        run: mv hapmap3.3.Q hapmap3_block.3.Q
+      - name: Install dependencies
+        run: |
+          install.packages("remotes")
+          remotes::install_github("royfrancis/pophelper")
+        shell: Rscript {0}
 
-      - name: Show the head of the P file
-        run: head hapmap3_block.3.P
+      - name: Create pictures
+        run: Rscript plot_results.R
 
-      - name: Show the head of the Q file
-        run: head hapmap3_block.3.P
-
-      - name: Run ADMIXTURE example with EM method
-        run: ./admixture hapmap3.bed 3 -m EM
-
-      - name: Move the P file
-        run: mv hapmap3.3.P hapmap3_em.3.P
-
-      - name: Move the Q file
-        run: mv hapmap3.3.Q hapmap3_em.3.Q
-
-      - name: Show the head of the P file
-        run: head hapmap3_em.3.P
-
-      - name: Show the head of the Q file
-        run: head hapmap3_em.3.P
-
-      - name: Zip the Q and P files
-        run: zip admixture_results.zip *.P *.Q
+      - name: Zip the Q, P and PNG files
+        run: zip admixture_results.zip *.P *.Q *.png
 
       - name: Upload table to the workflow tab
         uses: actions/upload-artifact@v2
