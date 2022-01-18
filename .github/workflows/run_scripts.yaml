@@ -1,0 +1,38 @@
+on:
+  push:
+  pull_request:
+  schedule:
+  - cron: "0 0 1 * *"
+
+name: run_scripts
+
+jobs:
+  run_scripts:
+    runs-on: ubuntu-latest
+    
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v1
+
+      - name: Download ADMIXTURE
+        run: ./download_admixture.sh
+
+      - name: Run create_under_over_fitting_plots.R 
+        run: Rscript create_under_over_fitting_plots.R
+
+      - name: Run f1_score.R
+        run: Rscript f1_score.R
+
+      - name: Zip results
+        run: zip pictures.zip *.png
+
+      - name: Upload table to the workflow tab
+        uses: actions/upload-artifact@v2
+        with:
+          name: pictures
+          path: pictures.zip
+
