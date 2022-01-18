@@ -24,3 +24,18 @@ jobs:
       - name: Run ADMIXTURE example
         run: ./admixture hapmap3.bed 3
 
+      - name: Show P file
+        run: cat *.P
+
+      - name: Show Q file
+        run: cat *.Q
+
+      - name: Zip the Q and P files
+        run: zip admixture_results.zip *.P *.Q
+
+      - name: Upload table to the workflow tab
+        uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: results.zip
+
