@@ -28,7 +28,7 @@ jobs:
         run: mv hapmap3.3.P hapmap3_block.3.P
 
       - name: Move the Q file
-        run: mv hapmap3.3.P hapmap3_block.3.P
+        run: mv hapmap3.3.Q hapmap3_block.3.Q
 
       - name: Show the head of the P file
         run: head hapmap3_block.3.P
@@ -43,7 +43,7 @@ jobs:
         run: mv hapmap3.3.P hapmap3_em.3.P
 
       - name: Move the Q file
-        run: mv hapmap3.3.P hapmap3_em.3.P
+        run: mv hapmap3.3.Q hapmap3_em.3.Q
 
       - name: Show the head of the P file
         run: head hapmap3_em.3.P
